@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 function connectToDataBase() {
 
-    mongoose.connect('mongodb://localhost:27017', {
+    mongoose.connect('mongodb://localhost:27017/market-place', {
 
         useNewUrlParser: true,
         useUnifiedTopology: true,
