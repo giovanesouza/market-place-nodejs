@@ -4,7 +4,7 @@ const userService = require('../service/usuario.service');
 const findUserByIdController = async (req, res) => {
 
     try {
-        const user = await userService.findAllUsersService(req.params.id);
+        const user = await userService.findUserByIdService(req.params.id);
 
         if (!user) {
             return res.status(404).send({ message: "Usuário não localizado! Tente novamente." });
