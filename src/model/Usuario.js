@@ -1,4 +1,6 @@
+// Importações
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const UsuarioSchema = new mongoose.Schema({
 
@@ -26,6 +28,18 @@ const UsuarioSchema = new mongoose.Schema({
 
 });
 
+
+// .pre("save") -> Define que algo seja realizado antes de salvar no BD
+UsuarioSchema.pre("save", async function(next) {
+
+    if(this.senha) {
+        // bcrypt.hash(this.senha, 10); -> Criptografa a senha com 10 saltos
+        this.senha = await bcrypt.hash(this.senha, 10);
+    }
+
+    next();
+
+});
 
 const Usuario = mongoose.model('usuarios', UsuarioSchema);
 
