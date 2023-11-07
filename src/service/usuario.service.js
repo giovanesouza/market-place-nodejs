@@ -23,11 +23,41 @@ const removeUserService = (id) => {
 };
 
 const addUserAddressService = (id, endereco) => {
+    return Usuario.findOneAndUpdate(
+        {
+            _id: id, // Filtro para localizar o endereço
+        }, 
+        {
+            // Add endereço
+            $push: {
+                enderecos: endereco,
+            }
 
+        },
+        {
+            rawResult: true, // Resultado cru
+        }
+    );
 };
 
-const removeUserAddressService = (id) => {
+const removeUserAddressService = (id, addressId) => {
+    return Usuario.findOneAndUpdate(
+        {
+            _id: id, // Filtro para localizar o endereço
+        }, 
+        {
+            // Remove endereço
+            $pull: {
+                enderecos: {
+                    _id: addressId
+                }
+            }
 
+        },
+        {
+            rawResult: true, // Resultado cru
+        }
+    );
 };
 
 const addUserFavProductService = (id, produto) => {

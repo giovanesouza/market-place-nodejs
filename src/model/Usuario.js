@@ -11,7 +11,7 @@ const UsuarioSchema = new mongoose.Schema({
             rua: { type: String, required: true },
             numero: { type: Number, required: true },
             complemento: { type: String, required: false },
-            rua: { type: String, required: true },
+            cep: { type: String, required: true },
             createdAt: { type: Date, default: Date.now(), required: true }
         }
     ],
