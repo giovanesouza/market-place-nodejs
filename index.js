@@ -1,7 +1,7 @@
 // Importações
 const express = require('express');
-const connectToDataBase = require('./src/database/database');
-const usuario = require('./src/router/usuario.router');
+const connectToDataBase = require('./src/database/database'); // Conexão com o BD
+const usuario = require('./src/router/usuario.router'); // Rotas do usuário
 
 const app = express();
 
@@ -10,10 +10,10 @@ const port = 3000;
 
 app.use(express.json()); // Para trabalhar com JSON (API REST)
 
-connectToDataBase(); // Conecta ao BD
+connectToDataBase(); // Conecta com BD
 
 
-app.use('/usuario', usuario);
+app.use('/usuario', usuario); // Chamando as rotas do usuário
 
 
 app.get('/', (req, res) => {
