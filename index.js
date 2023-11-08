@@ -44,8 +44,9 @@ app.post("/login", async (req, res) => {
             return res.status(400).send({ message: "Senha inválida!" });
         }
 
+        const token = authService.generateToken(user.id);
 
-        res.send(user);
+        res.send(token);
 
 
     } catch (err) {
