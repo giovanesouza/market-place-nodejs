@@ -1,5 +1,6 @@
 // Importações
 const express = require('express');
+require('dotenv').config(); // Configura tudo do .env antes de chamar qualquer arquivo que dependa dele
 const connectToDataBase = require('./src/database/database'); // Conexão com o BD
 const usuario = require('./src/router/usuario.router'); // Rotas do usuário
 const authService = require('./src/service/auth.service'); // Service de autorização
