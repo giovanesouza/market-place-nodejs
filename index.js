@@ -3,9 +3,10 @@ const express = require('express');
 require('dotenv').config(); // Configura tudo do .env antes de chamar qualquer arquivo que dependa dele
 const connectToDataBase = require('./src/database/database'); // Conexão com o BD
 const usuario = require('./src/router/usuario.router'); // Rotas do usuário
-const produto = require('./src/router/produto.router'); // Rotas de produto
-const categoria = require('./src/router/categoria.router'); // Rotas de produto
 const auth = require('./src/router/auth.router'); // Rotas de auth
+const produto = require('./src/router/produto.router'); // Rotas de produto
+const categoria = require('./src/router/categoria.router'); // Rotas de categoria
+const carrinho = require('./src/router/carrinho.router'); // Rotas do carrinho
 
 
 const app = express();
@@ -19,9 +20,10 @@ connectToDataBase(); // Conecta com BD
 
 
 app.use('/usuario', usuario); // Chamando as rotas do usuário
+app.use('/auth', auth); // Chamando as rotas de auth
 app.use('/produto', produto); // Chamando as rotas do produto
 app.use('/categoria', categoria); // Chamando as rotas de categoria
-app.use('/auth', auth); // Chamando as rotas de auth
+app.use('/carrinho', carrinho); // Chamando as rotas de carrinho
 
 
 app.get('/', (req, res) => {
