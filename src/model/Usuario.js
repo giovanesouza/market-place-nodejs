@@ -17,14 +17,14 @@ const UsuarioSchema = new mongoose.Schema({
             createdAt: { type: Date, default: Date.now(), required: true }
         }
     ],
-    createdAt: { type: Date, default: Date.now(), required: true },
-    // produtos_fav: [
-    //     {
-    //         _id: { type: mongoose.Schema.Types.ObjectId, unique: true, ref: "produtos", required: true },
-    //         createdAt: { type: Date, default: Date.now(), required: true }
-    //     }
-    // ],
-    admin: { type: Boolean, default: false, required: true}
+    produtos_fav: [
+        {
+            _id: { type: mongoose.Schema.Types.ObjectId, unique: true, ref: "produtos" },
+            createdAt: { type: Date, default: Date.now(), required: true }
+        }
+    ],
+    admin: { type: Boolean, default: false, required: true},
+    createdAt: { type: Date, default: Date.now(), required: true }
 
 });
 

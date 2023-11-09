@@ -26,7 +26,7 @@ const addUserAddressService = (id, endereco) => {
     return Usuario.findOneAndUpdate(
         {
             _id: id, // Filtro para localizar o endereço
-        }, 
+        },
         {
             // Add endereço
             $push: {
@@ -44,7 +44,7 @@ const removeUserAddressService = (id, addressId) => {
     return Usuario.findOneAndUpdate(
         {
             _id: id, // Filtro para localizar o endereço
-        }, 
+        },
         {
             // Remove endereço
             $pull: {
@@ -61,12 +61,41 @@ const removeUserAddressService = (id, addressId) => {
 };
 
 const addUserFavProductService = (id, produto) => {
+    console.log(produto)
+    return Usuario.findOneAndUpdate(
+        {
+            _id: id,
+        },
+        {
+            $push: {
+                produtos_fav: {
+                    _id: produto._id,
+                }
+            }
+        },
+        {
+            rawResult: true,
+        }
+    );
+}
 
-};
-
-const removeUserFavProductService = (id) => {
-
-};
+const removeUserFavProductService = (id, produto) => {
+    return Usuario.findOneAndUpdate(
+        {
+            _id: id,
+        },
+        {
+            $pull: {
+                produtos_fav: {
+                    _id: produto._id,
+                },
+            },
+        },
+        {
+            rawResult: true,
+        }
+    );
+}
 
 
 module.exports = {
