@@ -20,15 +20,15 @@
         }
     ],
     "paths": {
-        "/usuario/findAll": {
-            "get": {
+        "/usuario/findAll":{
+            "get":{
                 "security": [
                     {
                         "bearerAuth":[]
                     }
                 ],
-                "summary": "Lista todos os usuários da API",
-                "description": "Rota responsável por listar todos os usuários da API",
+                "summary": "Lista todos os usuarios da API",
+                "description": "Rota responsavel por listar todos os usuarios da API",
                 "tags": ["Usuario"],
                 "parameters": [
                     {
@@ -47,80 +47,76 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Ok, tarefa realizada com sucesso!",
+                        "description": "Ok, tarefa realizada com sucesso",
                         "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
+                            "application/json":{
+                                "schema":{
+                                    "type":"array",
+                                    "items":{
+                                        "type":"object",
                                         "$ref": "#/components/schemas/Usuario"
                                     }
                                 }
                             }
-                        }
+                        }                        
                     },
                     "401": {
-                        "description": "Unauthorized, Erro de autenticação, problemas com o token.",
+                        "description": "Unauthorized, Erro de autenticação, problemas com o token",
                         "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
                                     "properties": {
                                         "message": {
-                                        "type": "string"
+                                            "type": "string"
                                         }
-                        
                                     }
                                 }
                             }
-                        }
+                        } 
                     },
                     "404": {
-                        "description": "Not found, nenhum usuário encontrado.",
+                        "description": "Not Found, nenhum usuario encontrado",
                         "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
                                     "properties": {
                                         "message": {
-                                        "type": "string"
+                                            "type": "string"
                                         }
-                        
                                     }
                                 }
                             }
-                        }
+                        } 
                     },
                     "500": {
-                        "description": "Internal Server Error, alguma coisa deu errado no servidor.",
+                        "description": "Internal Server Error, alguma coisa deu errado no servidor",
                         "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
                                     "properties": {
                                         "message": {
-                                        "type": "string"
+                                            "type": "string"
                                         }
-                        
                                     }
                                 }
                             }
-                        }
+                        } 
                     }
-
                 }
             }
         },
-        "/usuario/find/{id}": {
-            "get": {
+        "/usuario/findById/{id}":{
+            "get":{
                 "security": [
                     {
                         "bearerAuth":[]
                     }
                 ],
-                "summary": "Lista o usuário que corresponde ao ID informado",
-                "description": "Rota responsável por localizar um usuário da API através de um ID informado",
+                "summary": "Lista o usuario que corresponde com o Id informado",
+                "description": "Rota responsavel por localizar um usuario da API atraves do ID informado",
                 "tags": ["Usuario"],
                 "parameters": [
                     {
@@ -190,11 +186,9 @@
                         } 
                     }
                 }
-                      
+                
             }
         },
-
-
         "/usuario/create":{
             "post":{
                 "summary": "Criar um usuario novo",
@@ -783,7 +777,6 @@
                 }
             }
         }
-
     },
     "components": {
         "securitySchemes": {
@@ -793,7 +786,7 @@
                 "bearerFormat": "JWT"
             }
         },
-        "schemas": {
+        "schemas":{
             "Usuario": {
                 "type": "object",
                 "properties": {
@@ -887,8 +880,7 @@
                     }
                 }
             }
-
         }
     }
-
+    
 }
