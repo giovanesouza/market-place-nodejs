@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "market-place",
-    "dateExported": "2023-11-10T19:39:04.416Z",
+    "dateExported": "2023-11-11T01:24:46.040Z",
     "version": "1.1",
     "folders": [
         {
@@ -53,13 +53,28 @@
             "colId": "dbbdacc7-aa0d-4649-a5fe-2c3655584831",
             "containerId": "5392b7f1-b394-4b65-baa4-722486c02eba",
             "name": "FindAll",
-            "url": "{{baseURL}}/usuario/findAll",
+            "url": "{{baseURL}}/usuario/findAll?limit=10&offset=0",
             "method": "GET",
             "sortNum": 10000,
             "created": "2023-11-07T21:55:28.493Z",
-            "modified": "2023-11-07T22:10:14.319Z",
+            "modified": "2023-11-11T00:16:41.618Z",
             "headers": [],
-            "params": [],
+            "params": [
+                {
+                    "name": "limit",
+                    "value": "10",
+                    "isPath": false
+                },
+                {
+                    "name": "offset",
+                    "value": "0",
+                    "isPath": false
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            },
             "tests": []
         },
         {
@@ -86,11 +101,11 @@
             "colId": "dbbdacc7-aa0d-4649-a5fe-2c3655584831",
             "containerId": "5392b7f1-b394-4b65-baa4-722486c02eba",
             "name": "FindById",
-            "url": "{{baseURL}}/usuario/findById/654abef68bac06fd5652a0a7",
+            "url": "{{baseURL}}/usuario/findById/654d62688db98a6763912208",
             "method": "GET",
             "sortNum": 20000,
             "created": "2023-11-07T22:04:02.457Z",
-            "modified": "2023-11-08T03:01:01.011Z",
+            "modified": "2023-11-10T23:54:04.298Z",
             "headers": [],
             "params": [],
             "auth": {
@@ -108,12 +123,12 @@
             "method": "POST",
             "sortNum": 30000,
             "created": "2023-11-07T22:12:38.381Z",
-            "modified": "2023-11-09T22:49:38.626Z",
+            "modified": "2023-11-10T20:00:44.052Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"nome\": \"Giovane\",\n  \"email\": \"g@gmail.com\",\n  \"senha\": \"1234\",\n  \"imagem\": \"img.giovanesite.com.br/giovane.jpg\"\n}",
+                "raw": "{\n  \"nome\": \"Giovane\",\n\n  \"senha\": \"1234\",\n  \"imagem\": \"img.giovanesite.com.br/giovane.jpg\"\n}",
                 "form": []
             },
             "tests": []
@@ -213,13 +228,24 @@
             "colId": "dbbdacc7-aa0d-4649-a5fe-2c3655584831",
             "containerId": "35d1967e-c5aa-42ae-9fd8-95c542824e7d",
             "name": "FindAll",
-            "url": "{{baseURL}}/produto/findAll",
+            "url": "{{baseURL}}/produto/findAll?limit=10&offset=0",
             "method": "GET",
             "sortNum": 80000,
             "created": "2023-11-09T01:47:16.461Z",
-            "modified": "2023-11-09T01:57:48.961Z",
+            "modified": "2023-11-11T00:47:06.175Z",
             "headers": [],
-            "params": [],
+            "params": [
+                {
+                    "name": "limit",
+                    "value": "10",
+                    "isPath": false
+                },
+                {
+                    "name": "offset",
+                    "value": "0",
+                    "isPath": false
+                }
+            ],
             "auth": {
                 "type": "bearer",
                 "bearer": "{{token}}"
@@ -380,12 +406,12 @@
             "method": "POST",
             "sortNum": 100000,
             "created": "2023-11-09T15:32:06.238Z",
-            "modified": "2023-11-09T21:49:44.939Z",
+            "modified": "2023-11-11T00:41:29.089Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"nome\": \"Produto 2\",\n  \"descricao\": \"uma descrição qualquer 2\",\n  \"precoUnitario\": 12.5,\n  \"imagem\": \"img2.site/produto1.jpg\",\n  \"codigoBarra\": 12345678,\n  \"categorias\": {\n    \"_id\": \"654d52edb38d311c440e9b35\"\n  }\n}",
+                "raw": "{\n  \"nome\": \"Celular Xiome\",\n  \"descricao\": \"Um celular diferenciado\",\n  \"precoUnitario\": 1300.50,\n  \"imagem\": \"img4.site/produto4.jpg\",\n  \"codigoBarra\": 987954651,\n    \"categorias\": {\n    \"_id\": \"654d52edb38d311c440e9b35\"\n  }\n}",
                 "form": []
             },
             "auth": {
