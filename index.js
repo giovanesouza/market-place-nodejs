@@ -1,6 +1,8 @@
 // Importações
 const express = require('express');
 require('dotenv').config(); // Configura tudo do .env antes de chamar qualquer arquivo que dependa dele
+const cors = require('cors');
+
 const connectToDataBase = require('./src/database/database'); // Conexão com o BD
 const usuario = require('./src/router/usuario.router'); // Rotas do usuário
 const auth = require('./src/router/auth.router'); // Rotas de auth
@@ -17,6 +19,18 @@ const port = 3000;
 
 
 app.use(express.json()); // Para trabalhar com JSON (API REST)
+
+// Habilita o cors e seta uma lista de 'origens'
+app.use(cors(
+    {
+        
+        origin: [ // Endereços que poderão acessar a API
+            "localhost:3001",
+            "localhost:3002"
+        ], 
+        methods: ["GET", "POST", "PUT", "PATCH", "DELETE"] // Permite a realização de requisições do CRUD
+    }
+)); 
 
 connectToDataBase(); // Conecta com BD
 
