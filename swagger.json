@@ -22,21 +22,76 @@
     "paths": {
         "/usuario/findAll": {
             "get": {
+                "security": [
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
                 "summary": "Lista todos os usuários da API",
                 "description": "Rota responsável por listar todos os usuários da API",
                 "tags": ["Usuario"],
                 "responses": {
                     "200": {
-                        "description": "Ok, tarefa realizada com sucesso!"
+                        "description": "Ok, tarefa realizada com sucesso!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/Usuario"
+                                    }
+                                }
+                            }
+                        }
                     },
                     "401": {
-                        "description": "Unauthorized, Erro de autenticação, problemas com o token."
+                        "description": "Unauthorized, Erro de autenticação, problemas com o token.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                        "type": "string"
+                                        }
+                        
+                                    }
+                                }
+                            }
+                        }
                     },
                     "404": {
-                        "description": "Not found, nenhum usuário encontrado."
+                        "description": "Not found, nenhum usuário encontrado.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                        "type": "string"
+                                        }
+                        
+                                    }
+                                }
+                            }
+                        }
                     },
                     "500": {
-                        "description": "Internal Server Error, alguma coisa deu errado no servidor."
+                        "description": "Internal Server Error, alguma coisa deu errado no servidor.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                        "type": "string"
+                                        }
+                        
+                                    }
+                                }
+                            }
+                        }
                     }
 
                 }
@@ -48,6 +103,113 @@
                 "description": "Rota responsável por localizar um usuário da API através de um ID informado",
                 "tags": ["Usuario"]
             }
+        }
+
+
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth":{
+                "type":"http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        },
+        "schemas": {
+            "Usuario": {
+                "type": "object",
+                "properties": {
+                    "nome": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "senha": {
+                        "type": "string"
+                    },
+                    "imagem": {
+                        "type": "string"
+                    },
+                    "enderecos": {
+                        "type": "array",
+                        "items":{
+                            "properties": {
+                                "rua": {
+                                    "type": "string"
+                                },
+                                "numero": {
+                                    "type": "number"
+                                },
+                                "complemento": {
+                                    "type": "string"
+                                },
+                                "CEP": {
+                                    "type": "string"
+                                },
+                                "createdAt": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "produtos_fav": {
+                        "type": "array",
+                        "items":{
+                            "properties": {
+                                "_id": {
+                                    "type": "string"
+                                },
+                                "createdAt": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "admin": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "UserAddress":{
+                "type": "array",
+                "items":{
+                    "properties": {
+                        "rua": {
+                            "type": "string"
+                        },
+                        "numero": {
+                            "type": "number"
+                        },
+                        "complemento": {
+                            "type": "string"
+                        },
+                        "CEP": {
+                            "type": "string"
+                        },
+                        "createdAt": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "ProductFav":{
+                "type": "array",
+                "items":{
+                    "properties": {
+                        "_id": {
+                            "type": "string"
+                        },
+                        "createdAt": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+
         }
     }
 
