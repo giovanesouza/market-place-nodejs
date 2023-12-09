@@ -25,8 +25,8 @@ app.use(cors(
     {
         
         origin: [ // Endereços que poderão acessar a API
-            "localhost:3001",
-            "localhost:3002"
+            "http://localhost:3001",
+            "http://localhost:3002"
         ], 
         methods: ["GET", "POST", "PUT", "PATCH", "DELETE"] // Permite a realização de requisições do CRUD
     }
