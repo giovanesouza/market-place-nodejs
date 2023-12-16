@@ -23,7 +23,7 @@ const UsuarioSchema = new mongoose.Schema({
             createdAt: { type: Date, default: Date.now(), required: true }
         }
     ],
-    admin: { type: Boolean, default: false, required: true},
+    admin: { type: Boolean, default: false},
     createdAt: { type: Date, default: Date.now(), required: true }
 
 });
