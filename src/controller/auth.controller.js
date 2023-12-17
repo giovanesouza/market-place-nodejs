@@ -17,9 +17,11 @@ const loginController = async (req, res) => {
     }
 
     const token = authService.generateToken(user.id);
+    const id = user.id;
 
     res.status(200).send({
         email,
+        id,
         token
     });
 }
