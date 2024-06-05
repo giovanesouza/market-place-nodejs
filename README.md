@@ -1,61 +1,76 @@
-# market-place-nodejs
+# Marketplace NodeJS
 
-O código do mais novo market place
+## ℹ️ Sobre
 
-codigo desenvolvido em Javascript
-![NodeJS](https://www.opus-software.com.br/wp-content/uploads/2018/09/nodejs.jpg "NodeJS")
+Este projeto foi desenvolvido durante as aulas da formação em desenvolvimento Full Stack da iTalents, módulo de Desenvolvimento Back-end, e tem como objetivo disponibilizar todas as funcionalidades necessárias para o funcionamento de um marketplace como cadastro de produtos e solicitação de pedidos. Na seção `## 🔗 Endpoints` você poderá consultar todas as rotas disponíveis
 
-## Instalação
+## 💻 Tecnologias utilizadas
 
-1. baixe todo o codigo
-2. abra o terminal do VS Code
-3. execute: npm i
-4. rode usando: npm run dev
-
-## Endpoints
-
-Todos os endopoins da nossa aplicação serão listados abaixo
-
-### Usuario
-
-Todos os endpoints de usuário listado abaixo
-
-#### /findById
+<div>
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" width="40" />
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" width="40" />
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" width="40" />          
+   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" width="40" />
+</div>
 
 
-| Codigo | resposta                                                      |
-| :------- | --------------------------------------------------------------- |
-| 200    | retorna um usuário válido                                   |
-| 400    | retorna uma mensagem informando o erro                        |
-| 401    | retorna o erro de autenticacao                                |
-| 404    | retorna uma mensagem informando que não encontrou o usuário |
+## 📝 Requisitos para rodar a aplicação
 
-Trecho do codigo do controller findByID:
+1. Ter o Git, Node uma IDE de sua preferência e o MongoDB instalados em sua máquina;
+2. Baixe todo o codigo, abra o terminal do VS Code e execute o comando: `npm i`;
+3. Crie um arquivo `.env` e insira as variáveis de ambiente que constam no `.env.example`;
+```
+URLDATABASE = "URL do seu banco no MongoDB"
+SECRET = "Chave para geração do TOKEN"
+```
+5. Execute o projeto por meio do comando: `npm start`
 
-````javascript
-const findUserByIdController = async (req, res) => {
-    try{
-        const user = await userService.findUserByIdService(req.params.id);
+## 🔗 Endpoints
 
-        if(!user){
-            return res.status(404).send({message: "Usuario nao encontrado, tente novamente"});
-        }
+### Autenticação
+- POST `/login`: Realiza o login do usuário.
 
-        return res.status(200).send(user);
-
-    }catch (err){
-        if(err.kind == "ObjectId"){
-            return res.status(400).send({ message: `ID informado, esta incorreto, tente novamente!`}); 
-        }
-
-        console.log(`erro: ${err.message}`);
-        return res.status(500).send({ message: `Erro inesperado tente novamente!`});  
-    }
-};
-
-
-````
+### Usuário
+- GET `/user/:id`: Retorna um usuário específico pelo ID.
+- GET `/users`: Retorna todos os usuários com paginação.
+- POST `/user`: Cria um novo usuário.
+- POST `/user/address`: Adiciona um endereço ao usuário específico pelo ID.
+- POST `/user/favorite-product`: Adiciona um produto favorito ao usuário específico pelo ID.
+- PUT `/user/:id`: Atualiza um usuário existente pelo ID.
+- DELETE `/user/:id`: Remove um usuário pelo ID.
+- DELETE `/user/address`: Remove um endereço do usuário.
+- DELETE `/user/favorite-product`: Remove um produto favorito do usuário específico pelo ID.
 
 ### Produto
+- GET `/product/:id`: Retorna um produto específico pelo ID.
+- GET `/products`: Retorna todos os produtos com paginação.
+- POST `/product`: Cria um novo produto.
+- POST `/product/category`: Adiciona uma categoria ao produto específico pelo ID.
+- PUT `/product/:id`: Atualiza um produto existente pelo ID.
+- DELETE `/product/:id`: Exclui um produto pelo ID.
+- DELETE `/product/category`: Remove uma categoria do produto específico pelo ID.
 
-Todos os endpoints de produto listado abaixo
+### Categoria
+- GET `/category/:id`: Retorna uma categoria específica pelo ID.
+- GET `/categories`: Retorna todas as categorias com paginação.
+- POST `/category`: Cria uma nova categoria.
+- PUT `/category/:id`: Atualiza uma categoria existente pelo ID.
+- DELETE `/category/:id`: Exclui uma categoria pelo ID.
+
+### Pedido
+- GET `/order/:id`: Retorna um pedido específico pelo ID.
+- GET `/orders`: Retorna todos os pedidos com paginação.
+- POST `/order`: Cria um novo pedido.
+- DELETE `/order/:id`: Exclui um pedido pelo ID.
+- PATCH `/order/status`: Atualiza o status de um pedido específico pelo ID.
+
+### Carrinho
+- GET `/cart/:id`: Retorna um carrinho específico pelo ID.
+- GET `/carts`: Retorna todos os carrinhos com paginação.
+- POST `/cart`: Cria um novo carrinho.
+- PUT `/cart/:id`: Atualiza um carrinho existente pelo ID.
+- DELETE `/cart/:id`: Exclui um carrinho pelo ID.
+
+<!--
+A fim de facilitar os testes, utilize o endereço da Documentação Swagger: `http://localhost:3000/docs/api-docs/`
+-->
